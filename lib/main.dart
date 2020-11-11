@@ -33,7 +33,7 @@ class MyHomePage extends StatelessWidget {
                     badgeColor: Colors.white70,
                     badgeContent: Text("3"),
                     child: Padding(
-                      padding: const EdgeInsets.all(5.0),
+                      padding: const EdgeInsets.fromLTRB(0, 0, 7, 0),
                       child: Text("CHATS"),
                     ),
                   ),
@@ -61,6 +61,7 @@ class MyHomePage extends StatelessWidget {
 
 class AddSomeText extends StatelessWidget {
   final String text;
+
   AddSomeText({this.text}) : super();
 
   @override
@@ -92,33 +93,37 @@ class CameraScreen extends StatelessWidget {
 }
 
 class ChatScreen extends StatelessWidget {
-  final List<String> entries = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F"
+  final List<String> contacts = [
+    "Muaaz SE",
+    "Tanveer SE",
+    "Haris",
+    "Irtaza",
+    "Qasim bhinder",
+    "Mohsin",
   ];
-  final List<int> colorCode = [
-    50,
-    100,
-    200,
-    300,
-    400,
-    500,
-    50,
-    100,
-    200,
-    300,
-    400,
-    500
+  List<String> lastLoginList = [
+    "6:12",
+    "8:03",
+    "11:12",
+    "4:34",
+    "2:12",
+    "1:33",
+  ];
+  List<String> userMessage = [
+    "great 👍",
+    "kesy ho? 🤔",
+    "Hi 👋👋",
+    "class kis time aj?",
+    "Allah Hafiz",
+    "Okay!",
+  ];
+  List<String> profilePics = [
+    "png",
+    "jpg",
+    "jpg",
+    "jpg",
+    "jpg",
+    "jpg",
   ];
 
   @override
@@ -128,17 +133,24 @@ class ChatScreen extends StatelessWidget {
         separatorBuilder: (BuildContext context, int index) {
           return Divider(
             color: Colors.black26,
-            thickness: 2,
+            thickness: 1,
           );
         },
-        itemCount: entries.length,
+        itemCount: contacts.length,
         padding: EdgeInsets.all(4),
         itemBuilder: (BuildContext context, int index) {
+          print("$index.${profilePics[index]}");
           return ListTile(
-            leading: Image.asset("./assets/avatar.png"),
-            trailing: Text("3:27 PM"),
+            leading: Image.asset("./assets/${index + 1}.${profilePics[index]}"),
+            trailing: Text(
+              "${lastLoginList[index]} PM",
+              style: TextStyle(fontSize: 11),
+            ),
+            subtitle: Text(
+              "${userMessage[index]}",
+            ),
             title: Text(
-              "Haris Warriach",
+              "${contacts[index]}",
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
             ),
           );
