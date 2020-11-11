@@ -31,7 +31,7 @@ class MyHomePage extends StatelessWidget {
                   child: Badge(
                     alignment: Alignment.topRight,
                     badgeColor: Colors.white70,
-                    badgeContent: Text("3"),
+                    badgeContent: Text("2"),
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(0, 0, 7, 0),
                       child: Text("CHATS"),
@@ -102,8 +102,8 @@ class ChatScreen extends StatelessWidget {
     "Mohsin",
   ];
   List<String> lastLoginList = [
-    "6:12",
-    "8:03",
+    "online",
+    "online",
     "11:12",
     "4:34",
     "2:12",
@@ -125,6 +125,10 @@ class ChatScreen extends StatelessWidget {
     "jpg",
     "jpg",
   ];
+  final Widget onlineMessage = Text(
+    "online",
+    style: TextStyle(color: Color.fromRGBO(37, 211, 102, 1), fontSize: 12),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -141,10 +145,33 @@ class ChatScreen extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           print("$index.${profilePics[index]}");
           return ListTile(
-            leading: Image.asset("./assets/${index + 1}.${profilePics[index]}"),
-            trailing: Text(
-              "${lastLoginList[index]} PM",
-              style: TextStyle(fontSize: 11),
+            leading: CircleAvatar(
+              backgroundColor: Colors.white,
+              backgroundImage:
+                  AssetImage("./assets/${index + 1}.${profilePics[index]}"),
+              radius: 26,
+            ),
+            trailing: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                lastLoginList[index] == 'online'
+                    ? onlineMessage
+                    : Text(
+                        "${lastLoginList[index] + ' PM'} ",
+                        style: TextStyle(fontSize: 11),
+                      ),
+                lastLoginList[index] == 'online'
+                    ? Badge(
+                        badgeContent: Text(
+                          "1",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        badgeColor: Color.fromRGBO(37, 211, 102, 1),
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.all(6),
+                      )
+                    : Text(''),
+              ],
             ),
             subtitle: Text(
               "${userMessage[index]}",
