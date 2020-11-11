@@ -33,7 +33,6 @@ class MyHomePage extends StatelessWidget {
             bottom: TabBar(
               tabs: [
                 Tab(
-                  // child: Text("Home"),
                   icon: Icon(Icons.camera_alt),
                 ),
                 Tab(
@@ -54,6 +53,12 @@ class MyHomePage extends StatelessWidget {
             StatusScreen(),
             CallScreen(),
           ]),
+          // ye add kiya hy ab
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {},
+            child: Icon(Icons.message),
+            backgroundColor: Color.fromRGBO(37, 211, 102, 1),
+          ),
         ),
       ),
     );
@@ -75,12 +80,6 @@ class AddSomeText extends StatelessWidget {
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
-            FloatingActionButton(
-              onPressed: () {},
-              backgroundColor: Color.fromRGBO(37, 211, 102, 1),
-              splashColor: Colors.white,
-              child: Icon(Icons.message),
-            )
           ],
         ),
       ),
