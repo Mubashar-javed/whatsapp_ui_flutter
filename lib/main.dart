@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -27,7 +28,15 @@ class MyHomePage extends StatelessWidget {
                   icon: Icon(Icons.camera_alt),
                 ),
                 Tab(
-                  child: Text("CHATS"),
+                  child: Badge(
+                    alignment: Alignment.topRight,
+                    badgeColor: Colors.white70,
+                    badgeContent: Text("3"),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Text("CHATS"),
+                    ),
+                  ),
                 ),
                 Tab(
                   child: Text("STATUS"),
@@ -83,11 +92,53 @@ class CameraScreen extends StatelessWidget {
 }
 
 class ChatScreen extends StatelessWidget {
+  final List<String> entries = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ];
+  final List<int> colorCode = [
+    50,
+    100,
+    200,
+    300,
+    400,
+    500,
+    50,
+    100,
+    200,
+    300,
+    400,
+    500
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AddSomeText(
-        text: "Chat Screen",
+      body: ListView.builder(
+        itemCount: entries.length,
+        padding: EdgeInsets.all(7),
+        itemBuilder: (BuildContext context, int index) {
+          return Padding(
+            padding: EdgeInsets.all(2),
+            child: Container(
+              padding: EdgeInsets.all(6),
+              height: 100,
+              color: Colors.amber[colorCode[index]],
+              child: Center(
+                child: Text("Entry ${entries[index]}"),
+              ),
+            ),
+          );
+        },
       ),
       floatingActionButton: Transform(
         transform: Matrix4.rotationY(180 * pi / 180),
