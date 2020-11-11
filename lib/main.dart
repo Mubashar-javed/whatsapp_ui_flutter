@@ -120,22 +120,26 @@ class ChatScreen extends StatelessWidget {
     400,
     500
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
+      body: ListView.separated(
+        separatorBuilder: (BuildContext context, int index) {
+          return Divider(
+            color: Colors.black26,
+            thickness: 2,
+          );
+        },
         itemCount: entries.length,
-        padding: EdgeInsets.all(7),
+        padding: EdgeInsets.all(4),
         itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding: EdgeInsets.all(2),
-            child: Container(
-              padding: EdgeInsets.all(6),
-              height: 100,
-              color: Colors.amber[colorCode[index]],
-              child: Center(
-                child: Text("Entry ${entries[index]}"),
-              ),
+          return ListTile(
+            leading: Image.asset("./assets/avatar.png"),
+            trailing: Text("3:27 PM"),
+            title: Text(
+              "Haris Warriach",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
             ),
           );
         },
