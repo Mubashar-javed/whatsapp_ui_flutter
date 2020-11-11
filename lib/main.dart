@@ -1,18 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      home: MyHomePage(),
-    );
-  }
+  runApp(MyHomePage());
 }
 
 class MyHomePage extends StatelessWidget {
@@ -53,12 +44,6 @@ class MyHomePage extends StatelessWidget {
             StatusScreen(),
             CallScreen(),
           ]),
-          // ye add kiya hy ab
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {},
-            child: Icon(Icons.message),
-            backgroundColor: Color.fromRGBO(37, 211, 102, 1),
-          ),
         ),
       ),
     );
@@ -68,6 +53,7 @@ class MyHomePage extends StatelessWidget {
 class AddSomeText extends StatelessWidget {
   final String text;
   AddSomeText({this.text}) : super();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -99,8 +85,19 @@ class CameraScreen extends StatelessWidget {
 class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return AddSomeText(
-      text: "Chat Screen",
+    return Scaffold(
+      body: AddSomeText(
+        text: "Chat Screen",
+      ),
+      floatingActionButton: Transform(
+        transform: Matrix4.rotationY(180 * pi / 180),
+        alignment: Alignment.center,
+        child: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.message),
+          backgroundColor: Color.fromRGBO(37, 211, 102, 1),
+        ),
+      ),
     );
   }
 }
